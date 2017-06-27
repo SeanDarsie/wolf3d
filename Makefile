@@ -6,7 +6,7 @@
 #    By: sdarsie <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/06/22 12:39:45 by sdarsie           #+#    #+#              #
-#    Updated: 2017/06/24 22:45:08 by sdarsie          ###   ########.fr        #
+#    Updated: 2017/06/26 13:56:33 by sdarsie          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ FILES = main.c \
 	world_map.c \
 	move_thru_map.c \
 	wall.c \
+	world.c \
 
 SRCS = $(addprefix $(SRC_DIR),$(FILES))
 

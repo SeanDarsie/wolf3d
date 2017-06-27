@@ -1,50 +1,60 @@
 #include "../wolf3d.h"
+ /* double oldDirX = dirX; */
+ /*      dirX = dirX * cos(-rotSpeed) - dirY * sin(-rotSpeed); */
+ /*      dirY = oldDirX * sin(-rotSpeed) + dirY * cos(-rotSpeed); */
+ /*      double oldPlaneX = planeX; */
+ /*      planeX = planeX * cos(-rotSpeed) - planeY * sin(-rotSpeed); */
+ /*      planeY = oldPlaneX * sin(-rotSpeed) + planeY * cos(-rotSpeed); */
 
 int key_press_hook(int key_event, t_graphic *map)
 {
+  // ft_bzero(map->addr, (WIND_W * WIND_H * 4));
   if (key_event == 53)
-    exit(1);
-  //key_event = 0;
-  //  map->map_w = 1;
-  // printf("%d\n", key_event);
+    {
+      free(map);
+      map = NULL;
+      exit(1);
+    }
+  printf("%d\n", key_event);
+  if (key_event == 2)
+    traverse_map(map, angle_p90(map, 'y'), angle_p90(map, 'x'), 1);
+  if (key_event == 0)
+    traverse_map(map, angle_p90(map, 'y'), angle_p90(map, 'x'), -1);
   if (key_event == 126)
-    {
-      ft_bzero(map->addr, (WIND_H * WIND_H));
-      map->you->x_pos += (cos(map->you->angle) / 2);
-      map->you->y_pos += (sin(map->you->angle) / 2);
-      begin(map);
-      mlx_put_image_to_window(map->mlx, map->wind, map->img, 0, 0);
-      printf("x->%f y->%f\n", map->you->x_pos, map->you->y_pos);
-    }
+      traverse_map(map, map->diry, map->dirx, 1);
   if (key_event == 125)
-    {
-      ft_bzero(map->addr, (WIND_H * WIND_H));
-      map->you->x_pos -= (cos(map->you->angle) / 2);
-      map->you->y_pos -= (sin(map->you->angle) / 2);
-      begin(map);
-       mlx_put_image_to_window(map->mlx, map->wind, map->img, 0, 0);
-      printf("x->%f y->%f\n", map->you->x_pos, map->you->y_pos);
-    }
+      traverse_map(map, map->diry, map->dirx, -1);
   if (key_event == 123)
     {
-      ft_bzero(map->addr, (WIND_H * WIND_H));
-      map->you->angle += DEG_30;
-      map->you->x_dir = cos(map->you->angle);
-      map->you->y_dir = sin(map->you->angle);
+      ft_bzero(map->addr, (WIND_W * WIND_H * 4));
+      rotate_view(map, 15);
+      // map->you->angle += RAD(15);
+      //if (map->you->angle > 2 * M_PI)
+      //	map->you->angle -= RAD(360);
+      //map->you->x_dir = cos(RAD(15)) ;
+      //map->you->y_dir = sin(map->you->angle);
       //map->you->y_pos -= sin(map->you->angle);
       begin(map);
-      mlx_put_image_to_window(map->mlx, map->wind, map->img, 0, 0);
+      // mlx_put_image_to_window(map->mlx, map->wind, map->img, 0, 0);
     }
    if (key_event == 124)
     {
-      ft_bzero(map->addr, (WIND_H * WIND_H));
-      map->you->angle -= DEG_30;
-      map->you->x_dir = cos(map->you->angle);
-      map->you->y_dir = sin(map->you->angle);
+      ft_bzero(map->addr, (WIND_W * WIND_H * 4));
+      rotate_view(map, -15);
+      /* map->you->angle -= RAD(15); */
+      /* if (map->you->angle < 0) */
+      /* 	map->you->angle += RAD(360);    */
+      /* map->you->x_dir = cos(map->you->angle); */
+      /* map->you->y_dir = sin(map->you->angle); */
       //map->you->y_pos -= sin(map->you->angle);
       begin(map);
-      mlx_put_image_to_window(map->mlx, map->wind, map->img, 0, 0);
+      //mlx_put_image_to_window(map->mlx, map->wind, map->img, 0, 0);
     }
+   if (key_event == 49)
+     ft_bzero(map->addr, WIND_W * WIND_H * 4);
+   mlx_put_image_to_window(map->mlx, map->wind, map->img, 0, 0);
+   printf("dirx %f, diry %f x->%f y->%f\n", map->dirx, map->diry,  map->posx, map->posy);
+   
   /* if (key_event == 124) */
   /*   move_you_left(map); */
   /* if (key_event == 125) */
