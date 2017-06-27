@@ -6,10 +6,9 @@
 #    By: sdarsie <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/06/22 12:39:45 by sdarsie           #+#    #+#              #
-#    Updated: 2017/06/26 13:56:33 by sdarsie          ###   ########.fr        #
+#    Updated: 2017/06/27 12:23:40 by sdarsie          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
 
 NAME = wolf3d
 LIBFT = ./libft/libft.a
@@ -26,7 +25,6 @@ FILES = main.c \
 	find_walls.c \
 	hooks.c \
 	make_colors.c \
-	more_hooks.c \
 	world_map.c \
 	move_thru_map.c \
 	wall.c \
@@ -41,7 +39,7 @@ OBJS = $(addprefix $(OBJ_DIR),$(OBJ_NAME))
 all: obj $(NAME)
 
 $(NAME):  $(LIBFT) $(OBJS) $(LIB_MLX) $(INC)
-	gcc -o $(NAME) $(OBJS) $(CFLAGS) $(MINILIB) $(LIBFTINC) $(FRAMEWORKS)
+	gcc -o $(NAME)  $(OBJS) $(CFLAGS) $(MINILIB) $(LIBFTINC) $(FRAMEWORKS)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	gcc $(CFLAGS) -o $@ -c $<  
