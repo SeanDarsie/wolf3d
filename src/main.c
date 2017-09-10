@@ -65,6 +65,8 @@ void	initialize_info_struct(t_graphic *info, char *map)
 		make_cool_map(info);
 	if (map[0] == '3')
 		make_world3(info);
+	if (map[0] == '4')
+	  carlos_map(info);
 	display_map(info);
 }
 
@@ -73,9 +75,9 @@ int		main(int ac, char **av)
 	t_graphic	*info;
 
 	if (ac != 2 || ft_strlen(av[1]) != 1 || av[1][0] < '1' ||
-			av[1][0] > '3')
+			av[1][0] > '4')
 	{
-		ft_putstr("Please specify 1 map\nValid options: 1, 2, 3\n");
+		ft_putstr("Please specify 1 map\nValid options: 1, 2, 3, 4\n");
 		exit(1);
 	}
 	info = (t_graphic*)malloc(sizeof(t_graphic));

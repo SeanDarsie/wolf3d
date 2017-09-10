@@ -18,8 +18,8 @@
 # include <math.h>
 # include <stdio.h>
 # define RAD(x) (M_PI / 180) * x
-# define MAP_H 24
-# define MAP_W 24
+# define MAP_H 32
+# define MAP_W 32
 # define WIND_W 640
 # define WIND_H 512
 # define HYP(x, y) sqrt(pow(x, 2) + pow(y, 2))
@@ -101,5 +101,7 @@ int				mouse_press_hook(int click, int x, int y, t_graphic *map);
 int				mouse_release_hook(t_graphic *map);
 int				motion_hook(t_graphic *map);
 int				exit_hook(t_graphic *map);
+void                          carlos_map(t_graphic *info);
+
 
 #endif
