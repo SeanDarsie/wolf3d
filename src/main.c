@@ -44,6 +44,14 @@ void	display_map(t_graphic *info)
 		      ft_putchar(' ');
 		      i++;
 		    }
+		  else if (info->map[k][i] == 1)
+		    {
+		      ft_putstr("\x1B[35m");
+		      ft_putnbr(info->map[k][i]);
+		      ft_putstr("\x1B[0m");
+		      ft_putchar(' ');
+		      i++;
+		    }
 		  else
 		    {
 		      ft_putnbr(info->map[k][i]);
