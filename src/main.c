@@ -36,9 +36,20 @@ void	display_map(t_graphic *info)
 		i = 0;
 		while (i <= MAP_W)
 		{
-			ft_putnbr(info->map[k][i]);
+		  if (info->map[k][i] > 1)
+		    {
+		      ft_putstr("\x1B[31m");
+		      ft_putnbr(info->map[k][i]);
+		      ft_putstr("\x1B[0m");
+		      ft_putchar(' ');
+		      i++;
+		    }
+		  else
+		    {
+		      ft_putnbr(info->map[k][i]);
 			ft_putchar(' ');
 			i++;
+		    }
 		}
 		ft_putchar('\n');
 		k++;
